@@ -1,0 +1,32 @@
+{
+	"people": [
+		{
+			"first": "John",
+			"last": "Smith"
+		},
+		{
+			"first": "Bob",
+			"last": "Smith"
+		},
+		{
+			"first": "John",
+			"last": "Doe"
+		},
+		{
+			"first": "Example",
+			"last": "Name"
+		},
+		{
+			"first": "Test",
+			"last": "Name"
+		},
+		{
+			"first": "Another",
+			"last": "Name"
+		},
+		{
+			"first": "Joe",
+			"last": "Schmoe"
+		}
+	]
+}
