@@ -43,11 +43,11 @@ function canMatch(from, to, allowSameToFrom) {
     // from field ha been set
     if ('from' in to && to.from !== null){
         if(allowSameToFrom) {
-            return false;
-        } else {
             if(to.from != from) {
                 return false;
             }
+        } else {
+            return false;
         }
     }
 
@@ -92,7 +92,7 @@ function matchArray(master) {
 
     do {
         for(i = 0; i < master.length; i++) {
-            allowSameToFrom = (tries > 10);
+            allowSameToFrom = (tries > 50);
             current = master[i];
             tmpArr = master.slice(0);
             tmpArr.splice(i, 1);
@@ -111,6 +111,10 @@ function matchArray(master) {
             master = shuffleEntries(master);
         }
         tries++;
+        if (tries > 1000) {
+            // just give up
+            return [];
+        }
     } while(!matched);
     return master;
 }
@@ -137,6 +141,9 @@ function printResults(array) {
 function main() {
     var results = null;
     getFile(argv.file, function(err, data) {
+        if(err) {
+            throw err;
+        }
         results = matchArray(data.people);
         printResults(results);
     });
